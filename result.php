@@ -16,7 +16,7 @@
     <div class="container my-5">
         <form method="GET">
             <select name="parking" id="parking">
-                <option selected="Parking">Parking</option>
+                <option selected="parking">Parking</option>
                 <option value="Si">Si</option>
                 <option value="No">No</option>
             </select>
@@ -28,7 +28,7 @@
                 <option value="4">4</option>
                 <option value="5">5</option>
             </select>
-            <button type="submit"class="btn btn-primary">Search</button>
+            <input type="submit" value="Search" class="btn btn-primary">
         </form>
         <table class="table">
             <thead>
@@ -42,11 +42,11 @@
             </thead>
             <tbody>
 
-                <?php foreach($hotels as $hotel): ?>
+                <?php foreach($hotels_filtered as $hotel): ?>
                     <tr>
                         <td><?= $hotel["name"] ?></td>
                         <td><?= $hotel["description"] ?></td>
-                        <td><?= $hotel["parking"] ?></td>
+                        <td><?= $hotel["parking"] ? "Si" : "No" ?></td>
                         <td><?= $hotel["vote"] ?></td>
                         <td><?= $hotel["distance_to_center"] ?></td>
                     </tr>

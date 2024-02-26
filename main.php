@@ -42,12 +42,17 @@
 
     $form_sent = !empty($_GET);
 
-    $hotels_result = [];
-
     if ($form_sent) {
+        $hotels_filtered = [];
+        $parking_filter = ($_GET['parking'] == 'Si') ? true : false;
+        $vote_filter = $_GET['vote'];
         foreach($hotels as $hotel) {
-            $valid_result = false;
+            if($hotel['vote'] >= $vote_filter && $hotel['parking'] == $parking_filter) {
+                $hotels_filtered[] = $hotel;
+            }
         }
+    } else {
+        $hotels_filtered = $hotels;
     }
 
 ?>
