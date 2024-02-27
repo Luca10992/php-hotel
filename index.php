@@ -1,4 +1,4 @@
-<?php require_once "./main.php"; ?>
+<?php require_once "./init.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,13 +18,15 @@
 
     <div class="container my-5">
         <form method="GET">
-            <select name="parking" id="parking">
-                <option value="parking">Parking</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select>
-            <input type="number" name="vote" id="vote" min="1" max="5" placeholder="Vote">
-            <input type="submit" value="Search" class="btn btn-primary">
+            <div class="d-flex gap-2">
+                <input class="form-check" type="checkbox" name="parking" id="parking"
+                    <?= $parking_filter ? 'checked' : '' ?>>
+                <label class="form-check-label" for="parking">
+                    Con Parcheggio
+                </label>
+            </div>
+            <input type="number" name="vote" id="vote" min="1" max="5" value="<?= $vote_filter ?>" placeholder="Vote">
+            <button type="submit" class="btn btn-primary">Search</button>
         </form>
         <table class="table">
             <thead>
@@ -38,8 +40,7 @@
             </thead>
             <tbody>
 
-                <?php foreach($hotels as $hotel): ?>
-                <tr>
+                <?php foreach($hotels as $hotel): ?> <tr>
                     <td><?= $hotel["name"] ?></td>
                     <td><?= $hotel["description"] ?></td>
                     <td><?= $hotel["parking"] ? "Yes" : "No" ?></td>

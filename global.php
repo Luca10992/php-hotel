@@ -39,21 +39,4 @@
         ],
 
     ];
-
-    $form_sent = !empty($_GET);
-
-    if ($form_sent) {
-        $parking_filter = $_GET['parking'];
-        $vote_filter = $_GET['vote'] ?? false;
-
-        if ($parking_filter == "Yes")
-            $hotels = array_filter($hotels, fn($hotel) => $hotel["parking"] == true);
-        if ($parking_filter == "No")
-            $hotels = array_filter($hotels, fn($hotel) => $hotel["parking"] == false);
-        if ($vote_filter)
-            $hotels = array_filter($hotels, fn($hotel) => $hotel["vote"] >= $vote_filter);  
-    } else {
-        return $hotels;
-    }
-
 ?>
